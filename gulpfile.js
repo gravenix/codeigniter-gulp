@@ -50,8 +50,8 @@ gulp.task('fonts', function(){
 	.pipe(gulp.dest(config.dist_dir+"/fonts"));
 })
 
-gulp.task('js', function(){
-	return gulp.src(['js/*.js'])
+gulp.task('js-uncompressed', function(){
+	return gulp.src(['js/*.js', '!js/*.min.js'])
 	.pipe(minify({
 		ext:{
 			min: '.min.js'
@@ -63,6 +63,13 @@ gulp.task('js', function(){
 		stream: true
 	}))
 });
+
+gulp.task('js-minified', function(){
+	return gulp.src(['js/*.min.js'])
+	.pipe(gulp.dest(config.dist_dir+"/js"))
+});
+
+gulp.task('js', gulp.series('js-minified', 'js-uncompressed'));
 
 gulp.task('watch', function(){
 	browserSync.init({

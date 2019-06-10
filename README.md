@@ -27,6 +27,9 @@ $ gulp
 
 When you modify these file with gulp running it'll be handled and refresh your browser.
 
+More info:
+ - In */js* folder files that names end with **.min.js** won't be minified but just copied
+
 ### Configuration File
 
 The configuration file is called **project-config.json** and is located in root folder
