@@ -2,7 +2,6 @@
 
 
 This is a project set up to being used with gulp so you can develop your application faster.
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 ### Getting Started
 
