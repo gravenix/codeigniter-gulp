@@ -65,6 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	</style>
 	<link rel="stylesheet" href="css/style.css">
+	<script src="js/script.min.js"></script>
 </head>
 <body>
 

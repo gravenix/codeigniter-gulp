@@ -28,4 +28,4 @@ composer.lock
 
 node_modules
 build
-debug.log
+./debug.log
