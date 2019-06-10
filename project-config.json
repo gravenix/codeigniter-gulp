@@ -1,0 +1,8 @@
+{
+    "dist_dir": "C:/xampp/htdocs/website",
+
+    "host": "localhost/website",
+    "port": 8080,
+
+    "debug": false
+}

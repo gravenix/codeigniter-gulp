@@ -1,0 +1,31 @@
+./dist
+
+.DS_Store
+
+code-igniter/application/cache/*
+!code-igniter/application/cache/index.html
+
+code-igniter/application/logs/*
+!code-igniter/application/logs/index.html
+
+!code-igniter/application/*/.htaccess
+
+composer.lock
+
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+/tests/tests/
+/tests/results/
+
+node_modules
+
+build
