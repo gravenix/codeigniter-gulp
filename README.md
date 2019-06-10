@@ -38,3 +38,17 @@ The configuration file is called **project-config.json** and is located in root 
 - **_host_**: Host used to *browser-sync*
 - **_port_**: Port used to *browser-sync* 
 - **_debug_**: The location of your apache server that serves HTTP requests 
+
+### Usage
+ - For just run gulp in development mode
+``` sh
+$ gulp
+```
+ - Build the project (minify files etc.). Build project is in **build/** folder
+``` sh
+$ gulp build
+```
+ - Clean **dist_dir** (removes everything)
+``` sh
+$ gulp cleanup
+```

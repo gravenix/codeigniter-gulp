@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
 const minify = require('gulp-minify');
+const clean = require('gulp-clean');
 const fs = require('fs');
 var config = {};
 
@@ -13,18 +14,18 @@ gulp.task('config', function(){
 		process.exit(1);
 	}
 	return gulp.src('.');
-});
+})
 
 gulp.task('debug', function(){
 	config.debug = true;
 	return gulp.src('.');
-});
+})
 
 gulp.task('build-config', function(){
 	config.debug = false;
 	config.dist_dir = "build/";
 	return gulp.src('.');
-});
+})
 
 gulp.task('sass', function(){
 	return gulp.src('scss/*.scss')
@@ -35,7 +36,7 @@ gulp.task('sass', function(){
 	 .pipe(browserSync.reload({
 	 	stream: true
 	 }))
-});
+})
 
 gulp.task('html', function(){
 	return gulp.src('app/**/*.+(php|html|htaccess)')
@@ -43,7 +44,7 @@ gulp.task('html', function(){
 	 .pipe(browserSync.reload({
 			stream: true
 		}))
-});
+})
 
 gulp.task('fonts', function(){
 	return gulp.src('fonts/*.otf')
@@ -62,12 +63,12 @@ gulp.task('js-uncompressed', function(){
 	.pipe(browserSync.reload({
 		stream: true
 	}))
-});
+})
 
 gulp.task('js-minified', function(){
 	return gulp.src(['js/*.min.js'])
 	.pipe(gulp.dest(config.dist_dir+"/js"))
-});
+})
 
 gulp.task('js', gulp.series('js-minified', 'js-uncompressed'));
 
@@ -80,7 +81,13 @@ gulp.task('watch', function(){
 	gulp.watch('scss/*.scss', gulp.series('sass'));
 	gulp.watch('js/**/*.js', gulp.series('js'));
 	gulp.watch('app/**/*.+(html|php|htaccess)', gulp.series('html'));
-});
+})
 
-gulp.task('default', gulp.parallel('config', 'debug', 'sass','watch', 'js', 'html', 'fonts'));
-gulp.task('build', gulp.parallel('build-config', 'sass', 'js', 'html', 'fonts'));
+gulp.task('__clean__', function(){
+	return gulp.src(config.dist_dir+'/*', {read: false})
+	.pipe(clean({force: true}))
+})
+
+gulp.task('default', gulp.parallel('config', 'debug', 'sass','watch', 'js', 'html', 'fonts'))
+gulp.task('build', gulp.series('build-config', '__clean__', 'sass', 'js', 'html', 'fonts'))
+gulp.task('cleanup', gulp.series('config', '__clean__'))
