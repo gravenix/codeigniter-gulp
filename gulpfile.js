@@ -39,7 +39,7 @@ gulp.task('sass', function(){
 })
 
 gulp.task('html', function(){
-	return gulp.src('app/**/*.+(php|html|htaccess)')
+	return gulp.src(['app/**/*.+(php|html|htaccess)', 'app/**/.htaccess'])
 	 .pipe(gulp.dest(config.dist_dir))
 	 .pipe(browserSync.reload({
 			stream: true
@@ -80,7 +80,7 @@ gulp.task('watch', function(){
 	})
 	gulp.watch('scss/*.scss', gulp.series('sass'));
 	gulp.watch('js/**/*.js', gulp.series('js'));
-	gulp.watch('app/**/*.+(html|php|htaccess)', gulp.series('html'));
+	gulp.watch(['app/**/*.+(html|php|htaccess)', 'app/**/.htaccess'], gulp.series('html'));
 })
 
 gulp.task('__clean__', function(){
